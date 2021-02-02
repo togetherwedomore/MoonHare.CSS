@@ -64,16 +64,11 @@
   }
 }
 
-@each $key, $utility in $utilities {
-  @if type-of($utility) == "map" and map-get($utility, responsive) == true {
-    @each $name, $breakpoint in $breakpoints{
-      @include media($name, $breakpoint){
-        @include generate-utility($utility, "-"+$name);
-      }
+@each $name, $breakpoint in $breakpoints{
+  @include media($name, $breakpoint){
+    @each $key, $utility in $utilities {
+      @include generate-utility($utility, $name);
     }
-  }
-  @else {
-    @include generate-utility($utility, "");
   }
 }
 
