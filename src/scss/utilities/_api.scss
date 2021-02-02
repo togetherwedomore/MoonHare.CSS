@@ -1,6 +1,8 @@
 // Utility generator
 // Used to generate utilities & print utilities
 
+$state: hover focus focus-within active checked focus-visible disabled;
+
 @mixin media($name, $breakpoint) {
   @if $name != "" {
     @media (min-width: #{$breakpoint}) { @content; }
@@ -29,9 +31,6 @@
     // Use custom class if present
     $property-class: if(map-has-key($utility, class), map-get($utility, class), nth($properties, 1));
     $property-class: if($property-class == null, "", $property-class);
-
-    // State params to generate pseudo-classes
-    $state: if(map-has-key($utility, state), map-get($utility, state), ());
 
     $infix: if($property-class == "" and str-slice($infix, 1, 1) == "-", str-slice($infix, 2), $infix);
 
@@ -75,10 +74,6 @@
 // Print utilities
 @media print {
   @each $key, $utility in $utilities {
-    // The utility can be disabled with `false`, thus check if the utility is a map first
-    // Then check if the utility needs print styles
-    @if type-of($utility) == "map" and map-get($utility, print) == true {
-      @include generate-utility($utility, "-print");
-    }
+    @include generate-utility($utility, $name);
   }
 }
