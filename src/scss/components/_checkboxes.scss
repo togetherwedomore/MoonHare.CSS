@@ -1,15 +1,29 @@
 .checkbox {
-  appearance: none;
-  width: $checkbox-width;
-  width: var(--checkbox-width, $checkbox-width);
-  height: $checkbox-height;
-  height: var(--checkbox-height, $checkbox-height);
-  border: $checkbox-border-width solid $checkbox-border-color;
-  border: var(--checkbox-border-width, $checkbox-border-width) solid
-    var(--checkbox-border-color, $checkbox-border-color);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  vertical-align: middle;
+  display: block;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+    margin: 0;
+  }
+
+  .box {
+    display: inline-block;
+    width: $checkbox-width;
+    width: var(--checkbox-width, $checkbox-width);
+    height: $checkbox-height;
+    height: var(--checkbox-height, $checkbox-height);
+    border: $checkbox-border-width solid $checkbox-border-color;
+    border: var(--checkbox-border-width, $checkbox-border-width) solid
+      var(--checkbox-border-color, $checkbox-border-color);
+    vertical-align: middle;
+  }
 
   &:checked {
     background-image: url("data:image/svg+xml,#{$checkbox-checked-icon}"),
