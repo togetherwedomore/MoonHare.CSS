@@ -1,4 +1,4 @@
-.checkbox {
+.check-label {
   display: block;
   position: relative;
   cursor: pointer;
@@ -11,9 +11,17 @@
     height: 0;
     width: 0;
     margin: 0;
+
+    &:checked ~ .checkbox .checked-mark{
+      display: block;
+    }
+
+    &:indeterminate ~ .checkbox .i-mark{
+      display: block;
+    }
   }
 
-  .box {
+  .checkbox {
     display: inline-block;
     width: $checkbox-width;
     width: var(--checkbox-width, $checkbox-width);
