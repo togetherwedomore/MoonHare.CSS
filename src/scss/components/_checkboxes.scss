@@ -12,11 +12,12 @@
     width: 0;
     margin: 0;
 
-    &:checked ~ .checkbox .checked-mark{
+    &:checked ~ .checkbox .checked-show
+    &:checked ~ .checkbox .checked-show {
       display: block;
     }
 
-    &:indeterminate ~ .checkbox .i-mark{
+    &:indeterminate ~ .checkbox .indeterminate-show {
       display: block;
     }
   }
@@ -31,6 +32,17 @@
     border: var(--checkbox-border-width, $checkbox-border-width) solid
       var(--checkbox-border-color, $checkbox-border-color);
     vertical-align: middle;
+
+    .check {
+      display: none;
+      position: relative;
+      left: 28%;
+      width: 35%;
+      height: 70%;
+      border: inherit;
+      border-width: 0 1.5em 1.5em 0;
+      transform: rotate(45deg);
+    }
   }
 
   &:checked {
